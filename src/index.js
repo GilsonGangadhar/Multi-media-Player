@@ -5,7 +5,13 @@ import App from './App'
 import store from './redux/store'
 
 import 'bootstrap/dist/css/bootstrap.min.css'
+import {BrowserRouter as Router} from 'react-router-dom'
 
 import "./_base.scss"
 
-ReactDOM.render(<Provider store={store}><App/></Provider>, document.getElementById('root'))
+ReactDOM.render(
+<Provider store={store}>
+    <Router>
+        <App/>
+    </Router>
+</Provider>, document.getElementById('root'))
