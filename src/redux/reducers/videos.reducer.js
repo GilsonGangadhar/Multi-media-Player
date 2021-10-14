@@ -1,4 +1,4 @@
-import { HOME_VIDEOS_SUCCESS, HOME_VIDEOS_FAIL, HOME_VIDOES_REQUEST } from "../actionType"
+import { HOME_VIDEOS_SUCCESS, HOME_VIDEOS_FAIL, HOME_VIDEOS_REQUEST } from "../actionType"
 
 const initialState = {
     videos : [],
@@ -15,7 +15,7 @@ export const homeVideosReducer = (state = initialState, action) => {
         case HOME_VIDEOS_SUCCESS : 
                     return {
                         ...state, 
-                        videos : payload.videos,
+                        videos : state.activeCategory === payload.category?[...state.videos,...payload.videos] : payload.videos,
                         loading : false,
                         nextPageToken : payload.nextPageToken,
                         activeCategory : payload.category,
@@ -28,7 +28,7 @@ export const homeVideosReducer = (state = initialState, action) => {
                         error : payload
                     }
 
-        case HOME_VIDOES_REQUEST : 
+        case HOME_VIDEOS_REQUEST : 
                     return {
                         ...state, 
                         loading : true
