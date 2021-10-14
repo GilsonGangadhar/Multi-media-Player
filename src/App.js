@@ -1,32 +1,72 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Container } from 'react-bootstrap'
 import Header from "./components/header/Header"
 import Sidebar from './components/sidebar/Sidebar'
 import HomeScreen from './screens/HomeScreen'
 import LoginScreen from './screens/loginScreen/LoginScreen'
+import {BrowserRouter as Router, Redirect, Route, Switch} from 'react-router-dom'
 
 import "./_app.scss"
+import { useSelector } from 'react-redux'
+
+const Layout = ({ children }) => {
+  const [sidebar, toggleSidebar] = useState(false)
+
+  const handleToggleSidebar = () => toggleSidebar(value => !value)
+
+  return (
+     <>
+        <Header handleToggleSidebar={handleToggleSidebar} />
+        <div className='app__container'>
+           <Sidebar
+              sidebar={sidebar}
+              handleToggleSidebar={handleToggleSidebar}
+           />
+           <Container fluid className='app__main '>
+              {children}
+           </Container>
+        </div>
+     </>
+  )
+} 
+
 
 const App = () => {
 
-  const [sidebar, toggleSidebar] = useState(false)
+const {accessToken, loading} = useSelector(state => state.auth)
 
-  const handleToogleSidebar = () => {
-    toggleSidebar(value => !value)
+useEffect(() => {
+
+  if(!loading && !accessToken){
+    
   }
+
+}, [accessToken, loading])
+
   return (
-    // <>
-    //   <Header handleToogleSidebar={handleToogleSidebar} />
+    <Router>
+      <Switch>
+          <Route path="/" exact>
+              <Layout>
+                <HomeScreen />
+              </Layout>
+          </Route>
 
-    //   <div className="app__container border border-info">
-    //     <Sidebar sidebar={sidebar} handleToogleSidebar={handleToogleSidebar}/>
-    //     <Container fluid className="app__main border border-warning">
-    //       <HomeScreen/>
-    //     </Container>
-    //   </div>
-    // </>
+          <Route path="/auth">
+              <LoginScreen />
+          </Route>
+          
+          <Route path="/search">
+            <Layout>
+              <h1>Search Results</h1>
+            </Layout>
+          </Route>
 
-    <LoginScreen />
+          <Route>
+            <Redirect to="/" />
+          </Route>
+      </Switch>
+    </Router>
   )
 }
 
