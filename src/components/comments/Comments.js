@@ -18,9 +18,9 @@ const Comments = ({videoId, totalComments}) => {
 
   const _comments = comments?.map(comment => comment.snippet.topLevelComment.snippet)
 
-  const handleComment = () => {
+  const handleComment = (e) => {
     e.preventDefault()
-    if(text.length == 0) return
+    if(text.length === 0) return
 
     dispatch(addComment(videoId,text))
     setText('')
