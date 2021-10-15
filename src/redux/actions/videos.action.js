@@ -1,4 +1,4 @@
-import { HOME_VIDEOS_SUCCESS, HOME_VIDEOS_FAIL, HOME_VIDEOS_REQUEST, SELECTED_VIDEO_REQUEST, SELECTED_VIDEO_SUCCESS, SELECTED_VIDEO_FAIL, RELATED_VIDEO_REQUEST, RELATED_VIDEO_SUCCESS, RELATED_VIDEO_FAIL, SEARCHED_VIDEO_REQUEST, SEARCHED_VIDEO_SUCCESS, SEARCHED_VIDEO_FAIL, SUBSCRIPTIONS_CHANNEL_REQUEST, SUBSCRIPTIONS_CHANNEL_SUCCESS, SUBSCRIPTIONS_CHANNEL_FAIL } from "../actionType"
+import { HOME_VIDEOS_SUCCESS, HOME_VIDEOS_FAIL, HOME_VIDEOS_REQUEST, SELECTED_VIDEO_REQUEST, SELECTED_VIDEO_SUCCESS, SELECTED_VIDEO_FAIL, RELATED_VIDEO_REQUEST, RELATED_VIDEO_SUCCESS, RELATED_VIDEO_FAIL, SEARCHED_VIDEO_REQUEST, SEARCHED_VIDEO_SUCCESS, SEARCHED_VIDEO_FAIL, SUBSCRIPTIONS_CHANNEL_REQUEST, SUBSCRIPTIONS_CHANNEL_SUCCESS, SUBSCRIPTIONS_CHANNEL_FAIL, CHANNEL_VIDEOS_REQUEST, CHANNEL_VIDEOS_SUCCESS, CHANNEL_VIDEOS_FAIL } from "../actionType"
 
 import request from '../../api'
 
@@ -175,3 +175,44 @@ export const getSubscribedChannels = () => async (dispatch, getState) => {
       })
    }
 }
+
+export const getVideosByChannel = id => async dispatch => {
+   try {
+      dispatch({
+         type: CHANNEL_VIDEOS_REQUEST ,
+      })
+
+      
+      const {
+         data: { items },
+      } = await request('/channels', {
+         params: {
+            part: 'contentDetails',
+            id: id,
+         },
+      })
+      const uploadPlaylistId = items[0].contentDetails.relatedPlaylists.uploads
+      
+      const { data } = await request('/playlistItems', {
+         params: {
+            part: 'snippet,contentDetails',
+            playlistId: uploadPlaylistId,
+            maxResults: 30,
+         },
+      })
+
+      dispatch({
+         type: CHANNEL_VIDEOS_SUCCESS,
+         payload: data.items,
+      })
+
+   } catch (error) {
+      console.log(error.response.data.message)
+      
+      dispatch({
+         type: CHANNEL_VIDEOS_FAIL,
+         payload: error.response.data,
+      })
+   }
+}
+
