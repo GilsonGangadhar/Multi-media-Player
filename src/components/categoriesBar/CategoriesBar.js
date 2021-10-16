@@ -6,21 +6,21 @@ import "./_categoriesBar.scss"
 const keywords = [
     'All',
     'React js',
-    'Angular js',
+    'Next js',
     'React Native',
     'use of API',
     'Redux',
     'Music',
     'Algorithm Art ',
     'Guitar',
-    'Bengali Songs',
+    'Hindi Songs',
     'Coding',
     'Cricket',
     'Football',
-    'Real Madrid',
+    'Barcelona',
     'Gatsby',
-    'Poor Coder',
-    'Shwetabh',
+    'Story Recapped',
+    'Ghost Series',
  ]
 
 const CategoriesBar = () => {
@@ -37,6 +37,8 @@ const CategoriesBar = () => {
             dispatch(getVideosByCategory(value))
          }
     }
+
+    console.log(activeElement, "activeElement")
     return (
         <div className="categoriesBar">
             {

@@ -13,7 +13,7 @@ import { useDispatch } from "react-redux";
 import { log_out } from "../../redux/actions/auth.action";
 import { Link } from "react-router-dom";
 
-const Sidebar = ({ sidebar, handleToogleSidebar }) => {
+const Sidebar = ({ sidebar, handleToggleSidebar }) => {
   const dispatch = useDispatch();
 
   const handleLogOut = () => {
@@ -22,14 +22,16 @@ const Sidebar = ({ sidebar, handleToogleSidebar }) => {
   return (
     <nav
       className={sidebar ? "sidebar open" : "sidebar"}
-      onClick={() => handleToogleSidebar(false)}
+      onClick={() => handleToggleSidebar(false)}
     >
-      <li>
-        <MdHome size={23} />
-        <span>Home</span>
-      </li>
-      
-      <Link to="/feed/subcriptions">
+      <Link to="/" style={{textDecoration: "none"}}>
+        <li>
+          <MdHome size={23} />
+          <span>Home</span>
+        </li>
+      </Link>
+
+      <Link to="/feed/subcriptions"  style={{textDecoration: "none"}}>
         <li>
           <MdSubscriptions size={23} />
           <span>Subscriptions</span>

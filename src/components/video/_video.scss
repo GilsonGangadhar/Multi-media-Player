@@ -49,12 +49,14 @@
         align-items: center;
         margin : 0.5rem 0;
 
-        img{
-            width : 15%; //not needed , only for dummy
+        img {
+            width: 36px;
+            height: 36px;
+   
             border-radius: 50%;
-            margin-right : 0.5rem;
+            margin-right: 0.5rem;
             cursor: pointer;
-        }
+         }
         p{
             margin-bottom: 0;
         }

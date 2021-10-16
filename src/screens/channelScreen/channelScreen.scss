@@ -2,13 +2,18 @@
 
 .channelHeader {
     border-bottom: 1px solid $border-color;
+    margin-bottom : 0.5rem;
  
     &__left {
        img {
           width: 80px;
           height: 80px;
-          border-radius: 50%;
+          border-radius: 70%;
        }
+    }
+
+    &__details {
+       margin-left : 1rem;
     }
     button {
        text-transform: uppercase;

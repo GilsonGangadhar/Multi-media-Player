@@ -2,9 +2,6 @@ import {
   HOME_VIDEOS_SUCCESS,
   HOME_VIDEOS_FAIL,
   HOME_VIDEOS_REQUEST,
-  SELECTED_VIDEO_REQUEST,
-  SELECTED_VIDEO_SUCCESS,
-  SELECTED_VIDEO_FAIL,
   RELATED_VIDEO_REQUEST,
   RELATED_VIDEO_SUCCESS,
   RELATED_VIDEO_FAIL,
@@ -25,6 +22,10 @@ const initialState = {
   nextPageToken: null,
   activeCategory: "All",
 };
+
+// const SELECTED_VIDEO_REQUEST = "SELECTED_VIDEO_REQUEST"
+// const SELECTED_VIDEO_SUCCESS = "SELECTED_VIDEO_SUCCESS"
+// const SELECTED_VIDEO_FAIL = "SELECTED_VIDEO_FAIL"
 
 export const homeVideosReducer = (state = initialState, action) => {
   const { type, payload } = action;
@@ -67,22 +68,21 @@ export const selectedVideoReducer = (
   },
   action
 ) => {
-  const { type, payload } = action;
+  const { payload, type } = action;
 
   switch (type) {
-    case SELECTED_VIDEO_REQUEST:
+    case "SELECTED_VIDEO_REQUEST":
       return {
         ...state,
         loading: true,
       };
-
-    case SELECTED_VIDEO_SUCCESS:
+    case "SELECTED_VIDEO_SUCCESS":
       return {
         ...state,
         video: payload,
         loading: false,
       };
-    case SELECTED_VIDEO_FAIL:
+    case "SELECTED_VIDEO_FAIL":
       return {
         ...state,
         video: null,
