@@ -1,3 +1,5 @@
+NOTE : Video-Watching-App(demo link) has a limit on how much data i can use through YouTube API V3(10,000 quotas a day). So use carefully. If videos are not rendering, please test the app the next day. 
+
 video-watching-App walkthrough : https://www.awesomescreenshot.com/video/5662877?key=3b6599cf8da13fd9910d2ba10a7795b6
 
 Video-Watching-App Demo URL : https://multi-media-player285.web.app
@@ -32,4 +34,3 @@ It's main features :
 9. Sign-out is done using firebase auth functionality (auth.signOut())
 10. Also made the app responsive for some smartphones.
 
-NOTE : Video-Watching-App has a limit on how much data i can use through YouTube API V3(10,000 quotas a day). So user carefully. If videos are not rendering, please test the app the next day. 
