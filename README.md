@@ -1,6 +1,6 @@
 video-watching-App walkthrough : https://www.awesomescreenshot.com/video/5662877?key=3b6599cf8da13fd9910d2ba10a7795b6
 
-Video-Watching-App Demo URL : https://multi-media-player285.web.app/
+Video-Watching-App Demo URL : https://multi-media-player285.web.app
 
 Video-Watching-App(YouTube Clone) is a React app, where the user can accesss and watch any Youtube videos of any Youtube channel. Here the user first need to login using gmail account to access the app. 
 
