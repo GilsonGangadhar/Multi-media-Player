@@ -29,3 +29,4 @@ It's main features :
 7. In the same above screen, user can see related videos on the right side and can also watch it. 
 8. In the search bar, user can search for desired Youtube channel. And can then click on that channel to view list of all the videos of that channel (shown in app walkthrough).
 9. Sign-out is done using firebase auth functionality (auth.signOut())
+10. Also made the app responsive for some smartphones.
