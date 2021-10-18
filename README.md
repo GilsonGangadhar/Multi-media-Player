@@ -31,3 +31,5 @@ It's main features :
 8. In the search bar, user can search for desired Youtube channel. And can then click on that channel to view list of all the videos of that channel (shown in app walkthrough).
 9. Sign-out is done using firebase auth functionality (auth.signOut())
 10. Also made the app responsive for some smartphones.
+
+NOTE : Video-Watching-App has a limit on how much data i can use through YouTube API V3(10,000 quotas a day). So user carefully. If videos are not rendering, please test the app the next day. 
