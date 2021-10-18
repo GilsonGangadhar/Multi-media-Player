@@ -16,6 +16,7 @@ it's build using :
 * Firebase database is used to store user's authentication details : name & email. 
 * Data for youtube clone built is got through Youtube API V3 (https://developers.google.com/youtube/v3/docs) through API links. It is accessed through axios package. 
 * lazy-loading is done using packages : react-lazy-load-image-component, react-loading-skeleton.
+* Infinite scroll is done using package : react-infinite-scroll-component
 * axios calls are made both to get data and post comments on the videos. 
 
 It's main features : 
