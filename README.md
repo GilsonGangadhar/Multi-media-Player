@@ -23,7 +23,7 @@ It's main features :
 
 1. User authentication via Gmail using firebase auth using firebase package. 
 2. Once logged in, user is directed to home page, where the vidoes with most likes are shown. 
-3. Lazy loading the contents on render & re-rendering. Bank black space is shown on video thumbnails areas if data not available for those videos. 
+3. Lazy loading the contents on render & re-rendering. Bank black space is shown on video thumbnails areas while rendering if data takes time to recieve. 
 4. User can then click on horizontal scroll-able categories buttons, to show filtered videos based on button names.
 5. User can click on any of the videos and can watch it. User can see description of the video in the description section. 
 6. User can also see top 15 comments in the comment section. User can also comment on videos, which will appear after 2 seconds.
