@@ -1,70 +1,36 @@
-# Getting Started with Create React App
+NOTE : Video-Watching-App(demo link) has a limit on how much data you can use through YouTube API V3(10,000 quotas a day). So use carefully. If videos are not rendering on the app, please test the app the next day. 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+video-watching-App walkthrough : https://www.awesomescreenshot.com/video/5662877?key=3b6599cf8da13fd9910d2ba10a7795b6
 
-## Available Scripts
+Video-Watching-App Demo URL : https://multi-media-player285.web.app
 
-In the project directory, you can run:
+Video-Watching-App(YouTube Clone) is a React app, where the user can accesss and watch any Youtube videos of any Youtube channel. Here the user first need to login using gmail account to access the app. 
 
-### `npm start`
+Here user can watch whatever video he likes. Videos are categorized based on interest. Here user can search for youtube channels , can view the vidoeList and watch those videos.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+ User can exit the app by clicking on log-out button on the side-bar. 
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+it's build using : 
 
-### `npm test`
+* Front-end : react-js, react-router-dom. redux-devtools-extension, react-infinite-scroll-component, react-loading-skeleton, react-show-more-text
+* styling is done using packages : Sass, bootstrap and react-bootstrap. Icons are got through react-icons package.
+* Gmail authentication is done using firebase auth. 
+* Firebase database is used to store user's authentication details : name & email. 
+* Data for youtube clone built is got through Youtube API V3 (https://developers.google.com/youtube/v3/docs) through API links. It is accessed through axios package. 
+* lazy-loading is done using packages : react-lazy-load-image-component, react-loading-skeleton.
+* Infinite scroll is done using package : react-infinite-scroll-component
+* axios calls are made both to get data and post comments on the videos. 
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+It's main features : 
 
-### `npm run build`
+1. User authentication via Gmail using firebase auth using firebase package. 
+2. Once logged in, user is directed to home page, where the vidoes with most likes are shown. 
+3. Lazy loading the contents on render & re-rendering. Bank black space is shown on video thumbnails areas while rendering if data takes time to recieve. 
+4. User can then click on horizontal scroll-able categories buttons, to show filtered videos based on button names.
+5. User can click on any of the videos and can watch it. User can see description of the video in the description section. 
+6. User can also see top 15 comments in the comment section. User can also comment on videos, which will appear after 2 seconds.
+7. In the same above screen, user can see related videos on the right side and can also watch it. 
+8. In the search bar, user can search for desired Youtube channel. And can then click on that channel to view list of all the videos of that channel (shown in app walkthrough).
+9. Sign-out is done using firebase auth functionality (auth.signOut())
+10. Also made the app responsive for some smartphones.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
