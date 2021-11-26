@@ -14,10 +14,14 @@ import {
   CHANNEL_VIDEOS_REQUEST,
   CHANNEL_VIDEOS_SUCCESS,
   CHANNEL_VIDEOS_FAIL,
+  PLAYLIST_REQUEST,
+  PLAYLIST_SUCCESS,
+  PLAYLIST_FAIL,
+  PLAYLIST_VIDEOS_SUCCESS,
+  PLAYLIST_VIDEOS_FAIL,
 } from "../actionType";
 
 import request from "../../api";
-
 
 export const getPopularVideos = () => async (dispatch, getState) => {
   try {
@@ -102,8 +106,7 @@ export const getVideoById = (id) => async (dispatch) => {
     dispatch({
       type: "SELECTED_VIDEO_SUCCESS",
       payload: data.items[0],
-   })
-
+    });
   } catch (error) {
     console.log(error.message);
     dispatch({
@@ -231,3 +234,160 @@ export const getVideosByChannel = (id) => async (dispatch) => {
     });
   }
 };
+
+export const getPlaylist = () => async (dispatch, getState) => {
+  try {
+    dispatch({
+      type: PLAYLIST_REQUEST,
+    });
+
+    const { data } = await request("/playlists", {
+      params: {
+        part: "snippet",
+        mine: true,
+        maxResults: 25,
+      },
+      headers: {
+        Authorization: `Bearer ${getState().auth.accessToken}`,
+      },
+    });
+
+    console.log("playlistUser", data.items);
+
+    dispatch({
+      type: PLAYLIST_SUCCESS,
+      payload: data.items,
+    });
+  } catch (error) {
+    console.log(error.message);
+    dispatch({
+      type: PLAYLIST_FAIL,
+      payload: error.message,
+    });
+  }
+};
+
+export const updatePlaylist =
+  (playlistId, title, description, closeModal, redirectToPlaylist) =>
+  async (dispatch, getState) => {
+    try {
+      const obj = {
+        id: playlistId,
+        snippet: {
+          title: title,
+          description: description,
+        },
+      };
+
+      const response = await request.put("/playlists", obj, {
+        params: {
+          part: "snippet",
+        },
+        headers: {
+          Authorization: `Bearer ${getState().auth.accessToken}`,
+        },
+      });
+
+      closeModal();
+      redirectToPlaylist();
+
+      // dispatch(getPlaylist())
+    } catch (error) {
+      console.log(error.response.data);
+    }
+  };
+
+export const deletePlaylist = (playlistId) => async (dispatch, getState) => {
+  console.log(playlistId, "playlistId");
+
+  try {
+    const response = await request.delete("/playlists", {
+      params: {
+        id: playlistId,
+      },
+      headers: {
+        Authorization: `Bearer ${getState().auth.accessToken}`,
+      },
+    });
+  } catch (error) {
+    console.log(error.response.data);
+  }
+};
+
+export const getPlaylistVideos =
+  (playlist_id) => async (dispatch, getState) => {
+    try {
+      dispatch({
+        type: "PLAYLIST_VIDEOS_REQUEST",
+      });
+
+      const { data } = await request("/playlistItems", {
+        params: {
+          part: "snippet, id",
+          playlistId: playlist_id,
+        },
+        headers: {
+          Authorization: `Bearer ${getState().auth.accessToken}`,
+        },
+      });
+
+      // console.log("UserplaylistVides", data.items)
+
+      dispatch({
+        type: PLAYLIST_VIDEOS_SUCCESS,
+        payload: data.items,
+      });
+    } catch (error) {
+      console.log(error.message);
+      dispatch({
+        type: PLAYLIST_VIDEOS_FAIL,
+        payload: error.message,
+      });
+    }
+  };
+
+export const insertPlaylistVideo =
+  (playlistId, videoId, onHide) => async (dispatch, getState) => {
+    try {
+      const obj = {
+        snippet: {
+          playlistId: playlistId,
+          resourceId: {
+            kind: "youtube#video",
+            videoId: videoId,
+          },
+        },
+      };
+      const response = await request.post("/playlistItems", obj, {
+        params: {
+          part: "snippet",
+        },
+        headers: {
+          Authorization: `Bearer ${getState().auth.accessToken}`,
+        },
+      });
+      console.log(response.data, "insertPlaylistVideo");
+      onHide();
+    } catch (error) {
+      console.log(error.response.data);
+    }
+  };
+
+export const deletePlaylistVideo =
+  (id, query) => async (dispatch, getState) => {
+    // console.log(id, "playlistVideoID")
+    try {
+      const response = await request.delete("/playlistItems", {
+        params: {
+          id: id,
+        },
+        headers: {
+          Authorization: `Bearer ${getState().auth.accessToken}`,
+        },
+      });
+
+      dispatch(getPlaylistVideos(query));
+    } catch (error) {
+      console.log(error.response.data);
+    }
+  };

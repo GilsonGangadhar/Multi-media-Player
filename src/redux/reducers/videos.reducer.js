@@ -14,6 +14,12 @@ import {
   CHANNEL_VIDEOS_FAIL,
   CHANNEL_VIDEOS_REQUEST,
   CHANNEL_VIDEOS_SUCCESS,
+  PLAYLIST_SUCCESS,
+  PLAYLIST_REQUEST,
+  PLAYLIST_FAIL,
+  PLAYLIST_VIDEOS_REQUEST,
+  PLAYLIST_VIDEOS_SUCCESS,
+  PLAYLIST_VIDEOS_FAIL,
 } from "../actionType";
 
 const initialState = {
@@ -226,3 +232,69 @@ export const channelVideosReducer = (
       return state;
   }
 };
+
+export const channelPlaylistReducer = (state = {
+  loading : false,
+  playlists : []
+}, action) => {
+  const {type, payload} = action
+
+  switch(type) {
+
+    case PLAYLIST_REQUEST : 
+    return {
+      ...state,
+      loading : true
+    }
+
+    case PLAYLIST_SUCCESS : 
+    return {
+      ...state,
+      playlists : payload,
+      loading : false
+    }
+
+    case PLAYLIST_FAIL : 
+    return {
+      ...state, 
+      loading : false,
+      error : payload
+    }
+
+    default :
+    return state
+  }
+}
+
+export const channelPlaylistVideosReducer = (state = {
+  loading : false,
+  playlistVideos : []
+}, action) => {
+  const {type, payload} = action
+
+  switch(type) {
+
+    case PLAYLIST_VIDEOS_REQUEST : 
+    return{
+      ...state,
+      loading : true
+    }
+
+    case PLAYLIST_VIDEOS_SUCCESS : 
+    return {
+      ...state,
+      playlistVideos : payload,
+      loading : false
+    }
+
+    case PLAYLIST_VIDEOS_FAIL : 
+    return {
+      ...state,
+      loading : false, 
+      error : payload
+    }
+
+    default :
+    return state
+  }
+}

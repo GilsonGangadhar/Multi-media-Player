@@ -19,6 +19,10 @@ const Header = ({handleToogleSidebar}) => {
         history.push(`/search/${input}`)
      }
 
+     const handleHome = () => {
+         history.push('/')
+     }
+
      const user = useSelector(state => state.auth?.user)
 
      console.log(user, "header")
@@ -28,8 +32,8 @@ const Header = ({handleToogleSidebar}) => {
             <FaBars className="header__menu" size={26}
             onClick={() => handleToogleSidebar()}
             />
-
-            <img src="https://pngimg.com/uploads/youtube/youtube_PNG2.png" alt="" className="header__logo"/>
+            
+            <img src="https://pngimg.com/uploads/youtube/youtube_PNG2.png" alt="" className="header__logo" onClick={handleHome} />
 
             <form onSubmit={handleSubmit}>
                 <input type="text" placeholder="search" value={input} onChange={e => setInput(e.target.value)} />

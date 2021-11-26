@@ -1,0 +1,37 @@
+@import '../../_base.scss';
+
+.playlist{
+    &__header {
+        margin : 2rem;
+        text-decoration : underline;
+        padding-bottom: 1rem;
+        border-bottom : 1px solid $border-color;
+    }
+
+    &__lists{
+        display : flex;
+        &__card {
+            cursor: pointer;
+            margin : 1rem;
+        }
+    }
+
+    &__cardDetails{
+        padding : 1rem 0rem;
+        color : #fff;
+        display: flex;
+        justify-content: space-between;
+
+        h5{
+            padding-top : 0.5rem;
+        }
+
+        button{
+                padding : 0.3rem;
+                border-radius : 4px;
+                border : none;
+                background-color: $border-color;
+                color : #fff;
+        }
+    }
+}

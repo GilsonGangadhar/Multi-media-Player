@@ -12,6 +12,8 @@ import WatchScreen from './screens/watchScreen/WatchScreen'
 import SearchScreen from './screens/SearchScreen'
 import SubscriptionsScreen from './screens/subscriptionsScreen/SubscriptionsScreen'
 import ChannelScreen from './screens/channelScreen/ChannelScreen'
+import Playlist from './screens/playlist/Playlist'
+import PlaylistVideos from './screens/playlistVideos/PlaylistVideos'
 
 const Layout = ({ children }) => {
   const [sidebar, toggleSidebar] = useState(false)
@@ -79,9 +81,21 @@ useEffect(() => {
             </Layout>
          </Route>
 
+         <Route path='/feed/playlist'>
+            <Layout>
+               <Playlist />
+            </Layout>
+         </Route>
+
          <Route path='/channel/:channelId'>
             <Layout>
                <ChannelScreen />
+            </Layout>
+         </Route>
+
+         <Route path='/feed/playlistVideos/:query' exact>
+            <Layout>
+               <PlaylistVideos />
             </Layout>
          </Route>
 
