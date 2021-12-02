@@ -19,9 +19,9 @@ const Header = ({handleToogleSidebar}) => {
         history.push(`/search/${input}`)
      }
 
-     const handleHome = () => {
-         history.push('/')
-     }
+    const handleHome = () => {
+        history.push('/')
+    }
 
      const user = useSelector(state => state.auth?.user)
 

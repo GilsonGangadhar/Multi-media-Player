@@ -34,12 +34,6 @@ const Sidebar = ({ sidebar, handleToggleSidebar }) => {
         </li>
       </Link>
 
-      {/* <li>
-        <MdThumbUp size={23} />
-        <span>Liked Videos</span>
-      </li>
-      */}
-
       <hr />
 
       <li onClick={handleLogOut}>
