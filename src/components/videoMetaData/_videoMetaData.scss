@@ -22,6 +22,7 @@
             border-radius : 0;
             text-transform : uppercase;
             letter-spacing : 0.5px;
+            cursor : auto;
 
             &.btn-gray{
                 background-color : gray; 
@@ -50,10 +51,8 @@
             font-weight : 500
         }
     }
-}
 
-// .modal-add-to-playlist {
-//     background: $black-secondary;
-//     border: 1px solid $border-color;
-//     color : $text-color;
-// }
+    &__channelButton{
+        cursor : auto;
+    }
+}
