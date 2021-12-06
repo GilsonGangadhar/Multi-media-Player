@@ -99,11 +99,11 @@ const VideoMetaData = ({ video: { snippet, statistics }, videoId }) => {
             {moment(publishedAt).fromNow()}
           </span>
           <div>
-            <span className="mr-3">
+            <span className="mr-3 videoMetaData__thumbsDetails">
               <MdThumbUp size={26} /> {numeral(likeCount).format("0.a")}
             </span>
 
-            <span style={{ paddingLeft: "10px" }} className="mr-3">
+            <span style={{ paddingLeft: "10px" }} className="mr-3 videoMetaData__thumbsDetails">
               <MdThumbDown size={26} /> {numeral(dislikeCount).format("0.a")}
             </span>
           </div>
@@ -133,7 +133,7 @@ const VideoMetaData = ({ video: { snippet, statistics }, videoId }) => {
             {"Add to Playlist"}
           </button>
           <button
-            className={`btn border-0 p-2 m-2 ${
+            className={`btn border-0 p-2 m-2 videoMetaData__subscribersDetails ${
               subscriptionStatus && "btn-gray"
             }`}
           >

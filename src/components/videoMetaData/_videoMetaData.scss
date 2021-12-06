@@ -22,7 +22,7 @@
             border-radius : 0;
             text-transform : uppercase;
             letter-spacing : 0.5px;
-            cursor : auto;
+            
 
             &.btn-gray{
                 background-color : gray; 
@@ -36,6 +36,14 @@
                 outline : none;
             }
         }
+    }
+
+    &__thumbsDetails{
+        cursor : auto;
+    }
+
+    &__subscribersDetails{
+        cursor : auto
     }
 
     &__description{
