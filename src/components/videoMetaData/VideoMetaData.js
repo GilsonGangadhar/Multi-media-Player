@@ -16,7 +16,6 @@ import {
   insertPlaylistVideo,
 } from "../../redux/actions/videos.action";
 
-
 const VideoMetaData = ({ video: { snippet, statistics }, videoId }) => {
   const { channelId, channelTitle, description, title, publishedAt } = snippet;
   const { viewCount, likeCount, dislikeCount } = statistics;
@@ -43,7 +42,6 @@ const VideoMetaData = ({ video: { snippet, statistics }, videoId }) => {
   }, [dispatch]);
 
   function MyVerticallyCenteredModal(props) {
-
     const handleOnChange = (e) => {
       const playlistId = e.target.value;
       dispatch(insertPlaylistVideo(playlistId, videoId, props.onHide));
@@ -99,12 +97,14 @@ const VideoMetaData = ({ video: { snippet, statistics }, videoId }) => {
             {moment(publishedAt).fromNow()}
           </span>
           <div>
-            <span className="mr-3 videoMetaData__thumbsDetails">
-              <MdThumbUp size={26} /> {numeral(likeCount).format("0.a")}
+            <span className="mr-3" style={{cursor : "auto"}}>
+              <MdThumbUp size={26} className="videoMetaData__thumbsDetails" />{" "}
+              {numeral(likeCount).format("0.a")}
             </span>
 
-            <span style={{ paddingLeft: "10px" }} className="mr-3 videoMetaData__thumbsDetails">
-              <MdThumbDown size={26} /> {numeral(dislikeCount).format("0.a")}
+            <span style={{ paddingLeft: "10px" , cursor : "auto" }} className="mr-3">
+              <MdThumbDown size={26} className="videoMetaData__thumbsDetails" />{" "}
+              {numeral(dislikeCount).format("0.a")}
             </span>
           </div>
         </div>
@@ -133,7 +133,8 @@ const VideoMetaData = ({ video: { snippet, statistics }, videoId }) => {
             {"Add to Playlist"}
           </button>
           <button
-            className={`btn border-0 p-2 m-2 videoMetaData__subscribersDetails ${
+          style={{cursor : "auto"}}
+            className={`btn border-0 p-2 m-2 ${
               subscriptionStatus && "btn-gray"
             }`}
           >
