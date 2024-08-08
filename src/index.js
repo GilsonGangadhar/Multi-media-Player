@@ -1,18 +1,20 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
-import {Provider} from 'react-redux'
-import App from './App'
-import store from './redux/store'
+import React from "react";
+import ReactDOM from "react-dom";
+import { Provider } from "react-redux";
+import App from "./App";
+import store from "./redux/store";
 
-import 'bootstrap/dist/css/bootstrap.min.css'
-import "react-lazy-load-image-component/src/effects/blur.css"
-import {BrowserRouter as Router} from 'react-router-dom'
+import "bootstrap/dist/css/bootstrap.min.css";
+import "react-lazy-load-image-component/src/effects/blur.css";
+import { BrowserRouter as Router } from "react-router-dom";
 
-import "./_base.scss"
+import "./_base.scss";
 
 ReactDOM.render(
-<Provider store={store}>
+  <Provider store={store}>
     <Router>
-        <App/>
+      <App />
     </Router>
-</Provider>, document.getElementById('root'))
+  </Provider>,
+  document.getElementById("root")
+);

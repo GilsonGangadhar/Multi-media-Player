@@ -25,8 +25,8 @@ const rootReducer = combineReducers({
   searchedVideos: searchedVideosReducer,
   subscriptionsChannel: subscriptionsChannelReducer,
   channelVideos: channelVideosReducer,
-  playlist : channelPlaylistReducer,
-  playlistVideos : channelPlaylistVideosReducer
+  playlist: channelPlaylistReducer,
+  playlistVideos: channelPlaylistVideosReducer,
 });
 
 const store = createStore(
